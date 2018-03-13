@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This template is for creating an Internet Draft using xml2rfc,
+     which is available here: http://xml.resource.org. -->
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC7218 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7218.xml">
+<!ENTITY RFC7858 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7858.xml">
+<!ENTITY RFC8094 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml">
+<!ENTITY nbsp    "&#160;">
+]>
+
+<rfc category="info" docName="draft-sonoda-dnsop-accept-certificate-00">
+  <front>
+    <title abbrev="Abbreviated Title">Accepting full resolver certificate</title>
+
+    <author fullname="Manabu Sonoda" role="editor" surname="Sonoda">
+      <organization>Internet Initiative Japan Inc.</organization>
+      <address>
+        <email>manabu-s@iij.ad.jp</email>
+      </address>
+    </author>
+
+    <date day="11" month="Mar" year="2018" />
+
+    <!-- Meta-data Declarations -->
+
+    <area>Operations</area>
+
+    <workgroup>Domain Name System Operations</workgroup>
+    <keyword>DNS</keyword>
+    <abstract>
+      <t>
+        Full service resolver uses x509 certificate to provide DNS over TLS<xref target='RFC7858' />
+        DNS over DTLS <xref target='RFC8094' />.
+        This memo describes How to accept this certificate.
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section title="Method of using TLSA record">
+      <section title='full service resolver certificate'>
+        <t>The certificate common name can be decided freely.
+        Add TLSA record <xref target='RFC7218' /> of the certificate to full resolver service IP address reverse name.
+        Tha TLSA record MUST validate DNSSEC.</t>
+      </section>
+      <section title='accepting full service resolver certificate'>
+        <t>Stub resolver begins the TLS handshake and receives Full resolver certificate.
+        Stub resolver requests TLSA record of full resolver service IP address reverse name
+        and validates the TLSA recedes itself using. This process can use not safety Server.
+        If the TLSA recedes are not validate, Stub resolver deny this certificate.
+        If the TLSA recedes are secure and The TLSA recedes include recede of handshake certificate,
+        Stub resolver accept this certificate.</t>
+      </section>
+      <section title='Distribution and update root trust anchor'>
+        <t>Root trust anchor distribution and update SHOULD update by OS periodic update.</t>
+      </section>
+    </section>
+
+    <section title="Method of using TLS-PKI - HTTPS style">
+      <section title='full service resolver certificate'>
+        <t>The certificate common name is full resolver service IP address reverse name.
+        Full resolver uses different certificate depending base on IP address.</t>
+      </section>
+      <section title='accepting full service resolver certificate'>
+        <t>Stub resolver begins the TLS handshake and receives Full resolver certificate.
+        Stub resolver accepts this certificate by root certificates on OS defaults.</t>
+      </section>
+    </section>
+
+    <section title='Operational Considerations'>
+      
+    </section>
+
+    <section title="Security Considerations">
+      <t>Both authoritative server and resolvers that implement LB SHOUD
+      carefully check for loops.</t>
+    </section>
+
+  </middle>
+
+  <!--  *****BACK MATTER ***** -->
+
+  <back>
+    <references title='Normative References'>
+&RFC7218;
+&RFC7858;
+&RFC8094;
+    </references>
+  </back>
+</rfc>
+
