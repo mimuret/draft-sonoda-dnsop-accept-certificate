@@ -19,7 +19,7 @@
       </address>
     </author>
 
-    <date day="11" month="Mar" year="2018" />
+    <date day="15" month="Mar" year="2018" />
 
     <!-- Meta-data Declarations -->
 
@@ -37,11 +37,12 @@
   </front>
 
   <middle>
-    <section title="Method of using TLSA record">
+    <section title="Method of using TLSA record - TLSA style">
       <section title='full service resolver certificate'>
         <t>The certificate common name can be decided freely.
-        Add TLSA record <xref target='RFC7218' /> of the certificate to full resolver service IP address reverse name.
-        Tha TLSA record MUST validate DNSSEC.</t>
+        Add TLSA record <xref target='RFC7218' /> of the certificate to full resolver service 
+        IP address reverse name.
+        Tha TLSA record MUST validate DNSSec.</t>
       </section>
       <section title='accepting full service resolver certificate'>
         <t>Stub resolver begins the TLS handshake and receives Full resolver certificate.
@@ -68,12 +69,14 @@
     </section>
 
     <section title='Operational Considerations'>
-      
+      <t>Case of DNSSec trust chains is break, TLSA style can't accept new certificate.</t>
+      <t>HTTPS style needs to create reverse name certificate. But public CA's are not 
+      create the certificate.</t>
     </section>
 
     <section title="Security Considerations">
-      <t>Both authoritative server and resolvers that implement LB SHOUD
-      carefully check for loops.</t>
+      <t>Attack create certificate of full resolver service IP address reverse name,
+         HTTPS style can MIM attack. </t>
     </section>
 
   </middle>
