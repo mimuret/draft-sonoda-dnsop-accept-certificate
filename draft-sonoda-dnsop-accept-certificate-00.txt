@@ -4,8 +4,8 @@
 
 Domain Name System Operations                                Sonoda, Ed.
 Internet-Draft                            Internet Initiative Japan Inc.
-Intended status: Informational                            March 15, 2018
-Expires: September 16, 2018
+Intended status: Informational                            March 21, 2018
+Expires: September 22, 2018
 
 
                   Accepting full resolver certificate
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 16, 2018.
+   This Internet-Draft will expire on September 22, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Sonoda                 Expires September 16, 2018               [Page 1]
+Sonoda                 Expires September 22, 2018               [Page 1]
 
 Internet-Draft              Abbreviated Title                 March 2018
 
@@ -109,7 +109,7 @@ Internet-Draft              Abbreviated Title                 March 2018
 
 
 
-Sonoda                 Expires September 16, 2018               [Page 2]
+Sonoda                 Expires September 22, 2018               [Page 2]
 
 Internet-Draft              Abbreviated Title                 March 2018
 
@@ -165,4 +165,4 @@ Author's Address
 
 
 
-Sonoda                 Expires September 16, 2018               [Page 3]
+Sonoda                 Expires September 22, 2018               [Page 3]
